@@ -73,8 +73,8 @@ body {
 }
 .animation-card-grid {
   display: grid;
-  // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  max-width: 1050px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  // max-width: 1050px;
   width: 100%;
   gap: 24px;
   padding: 20px;
@@ -121,13 +121,13 @@ body {
     z-index: 2;
     position: relative;
     display: inline-flex;
-    padding: 10px;
+    padding:7px;
 
 
     &::after {
       content: '';
       position: absolute;
-      inset: 5px;
+      // inset: px;
       width: 42px;
       height: 42px;
       border-radius: 50%;
@@ -532,13 +532,8 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
-* {
-  box-sizing: inherit;
-  &:before,
-  &:after {
-    box-sizing: inherit;
-  }
-}
+
+
 
 // Center
 body {
@@ -600,12 +595,12 @@ body {
 
 .second-section-container {
   min-height: auto;
-  padding: 0px 20px;
+  padding: 20vh 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20vh; // Added to remove bottom margin
-  
+  // margin-top: 20vh; // Added to remove bottom margin
+  background: #a1a1aa6b;
   .second-card {
     max-width: 1000px;
     width: 100%;

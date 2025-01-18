@@ -1,0 +1,150 @@
+.fifth-section-container {
+  background-color: rgba(0, 0, 0, 0.85); // Changed to transparent black
+  padding: 2rem; // Reduced padding
+  color: #fff; // Changed to white for better contrast
+  min-height: 80vh; // Reduced from 100vh
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 400px repeat(4, 1fr);
+    gap: 2rem;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // Update text colors for better visibility on dark background
+  .tree-link {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #a0a0a0;
+    }
+  }
+
+  .section-title {
+    color: #a0a0a0;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+
+    &::after {
+      content: '/';
+      margin-left: 0.25rem;
+    }
+  }
+
+  .tree-item {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: '├─';
+      margin-right: 0.5rem;
+      color: #a0a0a0;
+    }
+
+    &:last-child::before {
+      content: '└─';
+    }
+  }
+
+  .newsletter-section {
+    @media (max-width: 1200px) {
+      grid-column: 1 / -1;
+    }
+
+    h2 {
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    p {
+      font-size: 0.875rem;
+      color: #a0a0a0;
+      margin-bottom: 1rem;
+      max-width: 300px;
+      font-family: 'Roboto Mono', monospace;
+    }
+  }
+
+  .email-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+    }
+  }
+
+  .email-input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.875rem;
+    width: 200px;
+    border-color: rgba(255, 255, 255, 0.2);
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    @media (max-width: 480px) {
+      width: 100%;
+    }
+  }
+
+  .subscribe-btn {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #fff;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+  }
+
+  .footer-section {
+    font-size: 0.875rem;
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  .tree-list {
+    list-style: none;
+  }
+
+  .highlight {
+    color: #ff4d4d;
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+  }
+}

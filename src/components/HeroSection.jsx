@@ -10,6 +10,9 @@ import box1iconimage5 from "../assets/box1iconimage5.png";
 import box1iconimage6 from "../assets/box1iconimage6.png";
 import { Link, useNavigate } from "react-router-dom";
 import gsap from "gsap";
+import "../styles/FourthSection.scss";
+import HerosectionFourth  from './HerosectionFourth'; // Update import statement
+import HerosectionFifth from './HerosectionFifth'; // Add this import
 
 const HerosectionFirst = () => {
   return (
@@ -683,17 +686,17 @@ const HeroSection = () => {
           <HerosectionThird />
         </div>
         <div className="Layout_section">
-          {/* <HerosectionFourth /> */}
+          <HerosectionFourth />
         </div>
         <div className="Layout_section">
-          {/* <HerosectionFifth /> */}
+          <HerosectionFifth />
         </div>
-        <div className="Layout_section">
+        {/* <div className="Layout_section">
           <Herosectionsixth />
         </div>
         <div className="Layout_section">
           <Herosectionseventh />
-        </div>
+        </div> */}
         {/* <AIFooter /> */}
         <LayoutOverlay
           isVisible={isOverlayVisible}

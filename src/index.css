@@ -131,7 +131,7 @@ body {
 
 #root {
   width: 100vw;
-  height: 100vh;
+  height: 100vh;  
 }
 
 /* Base styles */
@@ -140,7 +140,7 @@ body {
   background: #000;
   color: #fff;
   min-height: 100vh;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 /* Card styles */
@@ -348,3 +348,7 @@ svg {
     transition: none;
   }
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
