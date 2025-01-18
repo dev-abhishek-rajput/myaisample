@@ -15,206 +15,326 @@
 /* -------------------------------------------------------------------------------------------------------- HerosectionFirst */
 
 .HerosectionFirst_maincont {
-  width: 100%;
-  min-height: 100vh;
-  /* background: linear-gradient(131.19deg, #1c1c1c 1.42%, #292929 100.93%); */
+  --fd-background: #00000092;
+  --fd-foreground: #f2f2f2;
+  --fd-muted: #8c8c8c;
+  --fd-primary: #ffffff;
+  --fd-primary-foreground: #000000;
+  --grid-color: rgba(255, 255, 255, 0.05);
+  
   position: relative;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 80px;
-}
-
-.HerosectionFirst_contentcont {
-  /* background-color: pink; */
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  text-align: start;
-  width: 42%;
-}
-
-.HerosectionFirst_contentcont_h1 {
-  font-size: 100px;
-  color: #dc5f00;
-  font-weight: 700;
-  line-height: 100px;
-  text-transform: uppercase;
-}
-
-.HerosectionFirst_contentcont_h2 {
-  font-size: 76px;
-  font-weight: 700;
-  line-height: 100px;
-  text-transform: uppercase;
-  background-color: transparent;
-  color: transparent;
-  -webkit-text-stroke: 0.3px white;
-  -webkit-text-fill-color: transparent;
-  opacity: 0.6;
-  word-spacing: -25px;
-}
-
-.HerosectionFirst_contentcont_p {
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 21px;
-  text-transform: uppercase;
-  background-color: transparent;
-  color: #ffffff;
-  margin: 10px 0px;
-}
-
-.HerosectionFirst_contentcont_buttoncont {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
   width: 100%;
-}
-
-.HerosectionFirst_contentcont_buttoncont_button {
-  width: 30%;
-  height: 100%;
-  background-color: transparent;
-  border: 2px solid #dc5f00;
-  outline: none;
-  padding: 10px;
-  border-bottom-right-radius: 50px;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  height: 100vh;
+  background-color: var(--fd-background);
   display: flex;
   justify-content: center;
-  align-content: center;
-  color: white;
-  margin: 50px 0px;
-  font-size: 30px;
-  font-weight: 700;
+  align-items: center;
+  overflow: hidden;
 }
 
-.HerosectionFirst_contentcont_buttoncont_button:nth-child(2) {
-  margin-left: 50px;
+.grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  z-index: 1;
+}
+
+.relative {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.relative::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(to left, #0000 20%, #363636 60%, #0000);
+  z-index: 0;
+  animation: shimmer 4s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  text-align: center;
+  padding: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  justify-content: left;
+}
+
+.logo svg {
+  width: 40px;
+  height: 40px;
+}
+
+.logo span {
+  font-size: 14px;
+  color: var(--fd-muted);
+}
+
+.content h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--fd-foreground);
+}
+
+.content p {
+  --tw-text-opacity: 1;
+  color: rgb(115 115 115/var(--tw-text-opacity));
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  margin-bottom: 2.5rem;
+  text-wrap: balance;
+  font-family: iA Writer Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  opacity: 1;
+  transform: none;
+  -webkit-text-size-adjust: 100%;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  text-rendering: optimizeLegibility;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--fd-primary-foreground);
+  background: var(--fd-primary);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  background: #f2f2f2;
+}
+
+.btn svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s;
+}
+
+.btn:hover svg {
+  transform: translateX(4px);
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #fff, #888);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
 }
 
 /* -------------------------------------------------------------------------------------------------------- HerosectionSecond */
 
-.HerosectionSecond_maincont {
+.card {
   width: 100%;
-  /* height: 100vh; */
-  padding: 80px;
-  /* background: linear-gradient(110.08deg, #1c1c1c 4.63%, #292929 96.63%); */
+  max-width: 1400px;
+  min-height: 400px; /* Decreased from 700px */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 10px auto; /* Decreased from 20px */
+  display: flex;
+  margin-top: 20vh;
 }
 
-.HerosectionSecond_contentcont {
-  /* background-color: pink; */
-  padding: 10px;
+.card-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  width: 100%; /* Added to ensure full width */
+  height: 100%; /* Added to ensure full height */
+}
+
+.left-section {
+  padding: 2rem;
+  flex: 1;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #888;
+  font-size: 0.875rem;
+  margin-bottom: 3rem;
+}
+
+.features {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.features li {
+  display: flex;
   align-items: flex-start;
-  width: fit-content;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
 }
 
-.HerosectionSecond_contentcont_h1 {
-  font-size: 100px;
-  font-weight: 700;
-  line-height: 115px;
-  color: #dc5f00;
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #fff;
+  color: #000;
+  padding: 0.5rem 1.25rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: transform 0.2s;
 }
 
-.HerosectionSecond_contentcont_h2 {
-  font-size: 56px;
-  font-weight: 300;
-  line-height: 64px;
-  text-transform: uppercase;
-  background-color: transparent;
-  color: transparent;
-  -webkit-text-stroke: 0.3px white;
-  -webkit-text-fill-color: transparent;
-  opacity: 0.6;
-  word-spacing: -25px;
+.button:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.9);
 }
 
-.HerosectionSecond_contentcont_p {
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 30px;
-  text-transform: uppercase;
-  background-color: transparent;
-  color: #ffffff;
-  margin: 30px 0px;
-  width: 50%;
+.tech-stack {
+  margin-top: 2rem;
+  color: #888;
+  font-size: 0.875rem;
+}
+
+.right-section {
+  padding: 2rem; /* Decreased from 4rem */
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll-container {
+  max-height: 400px; /* Decreased from 500px */
+  overflow: hidden;
+  position: relative;
+  flex-grow: 1;
+}
+
+.scroll-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  animation: scroll 5s linear infinite; /* Faster animation (was 30s) */
+}
+
+.feature-card {
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.feature-card svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.feature-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.feature-card:hover svg {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+@keyframes scroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+/* Add this new animation for continuous scrolling */
+.scroll-content:hover {
+  animation-play-state: paused; /* Pause on hover */
+}
+
+.scroll-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to top, rgba(0,0,0,1), transparent);
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .card-container {
+    flex-direction: row;
+  }
+
+  .left-section {
+    width: 55%; /* Adjusted for better proportion */
+    padding: 4rem; /* Increased padding */
+  }
+
+  .right-section {
+    width: 45%; /* Adjusted for better proportion */
+  }
 }
 
 /* -------------------------------------------------------------------------------------------------------- HerosectionThird */
 
-.HerosectionThird_maincont {
-  width: 100%;
-  /* background: linear-gradient(110.08deg, #1c1c1c 4.63%, #292929 96.63%); */
-  padding: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-}
 
-.HerosectionThird_maincont_h1 {
-  font-size: 30px;
-  font-weight: 300;
-  line-height: 35px;
-  text-transform: uppercase;
-  background-color: transparent;
-  color: transparent;
-  -webkit-text-stroke: 0.3px white;
-  -webkit-text-fill-color: transparent;
-  opacity: 0.6;
-  margin: 50px 0px;
-}
-
-.HerosectionThird_contentcont {
-  display: flex;
-  justify-content: flex-start;
-  align-items: stretch; /* Ensure boxes stretch to the same height */
-  width: 55%;
-  /* background-color: red;  */
-}
-
-.HerosectionThird_contentcont_box {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  flex: 1;
-  border: 1px solid #dc5f00;
-  background: #262626;
-  border-radius: 10px;
-  margin: 0px 10px;
-}
-
-.HerosectionThird_contentcont_box_imagecont {
-  height: 25%;
-}
-
-.HerosectionThird_contentcont_box_imagecont > img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.HerosectionThird_contentcont_box_p {
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 21px;
-  text-align: center;
-  color: #ffffff;
-  width: 70%;
-  text-transform: uppercase;
-  margin-top: 20px;
-}
 
 /* -------------------------------------------------------------------------------------------------------- HerosectionFourth */
+
 .HerosectionFourth_maincont {
   width: 100%;
   /* background: linear-gradient(110.08deg, #1c1c1c 4.63%, #292929 96.63%); */
@@ -1375,4 +1495,34 @@ body::-webkit-scrollbar {
   .HerosectionFourth_contentcont {
     flex-direction: column;
   }
+}
+
+/* Add the CSS for the scrolling animation */
+
+.scrolling-text-container {
+  width: 100%;
+  overflow: hidden;
+  padding: 40px 0;
+  background: rgba(38,38,38,0.9);
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.scrolling-text {
+  display: block;
+  color: #dc5f00;
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 0 20px;
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  will-change: transform, opacity;
 }

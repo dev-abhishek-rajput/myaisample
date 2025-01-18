@@ -1,5 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Scroll } from "@react-three/drei";
+import "../App.css";  // Add this import
+import "../styles/ThirdSection.scss";  // Add this import
 import box1iconimage from "../assets/box1iconimage.png";
 import box2iconimage from "../assets/box1iconimage2.png";
 import box1iconimage3 from "../assets/box1iconimage3.png";
@@ -12,19 +14,26 @@ import gsap from "gsap";
 const HerosectionFirst = () => {
   return (
     <div className="HerosectionFirst_maincont">
-      <div className="HerosectionFirst_contentcont">
-        <h1 className="HerosectionFirst_contentcont_h1">Reinvent</h1>
-        <h2 className="HerosectionFirst_contentcont_h2">Value Chain</h2>
-        <p className="HerosectionFirst_contentcont_p">
-          Reinvent the value chain, solve unique problems, and boost
-          productivity, efficiency, and profitability with Bespoke AI solutions.
-        </p>
-        <div className="HerosectionFirst_contentcont_buttoncont">
-          <button className="HerosectionFirst_contentcont_buttoncont_button">
-            CTA 1
-          </button>
-          <button className="HerosectionFirst_contentcont_buttoncont_button">
-            CTA 2
+      <div className="grid"></div>
+      <div className="relative">
+        <div className="content">
+          <div className="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="none">
+              <rect x="0.5" y="0.5" width="639" height="639" rx="11.5" fill="#0A0A0A"/>
+              <rect x="0.5" y="0.5" width="639" height="639" rx="11.5" stroke="#262626"/>
+              <path d="M460.179 320.4C460.179 295.68 457.419 274.32 451.899 256.32C446.619 238.08 438.459 221.64 427.419 207C416.619 192.36 401.979 176.88 383.499 160.56L398.979 144C420.099 161.04 437.259 177.84 450.459 194.4C463.899 210.96 474.099 229.44 481.059 249.84C488.259 270.24 491.859 293.76 491.859 320.4C491.859 347.04 488.259 370.56 481.059 390.96C474.099 411.36 463.899 429.84 450.459 446.4C437.259 462.96 420.099 479.76 398.979 496.8L383.499 480.24C401.739 463.92 416.259 448.44 427.059 433.8C438.099 418.92 446.379 402.48 451.899 384.48C457.419 366.24 460.179 344.88 460.179 320.4Z" fill="white"/>
+              <path d="M181.68 320.4C181.68 344.88 184.44 366.24 189.96 384.48C195.48 402.48 203.64 418.92 214.44 433.8C225.48 448.44 240.12 463.92 258.36 480.24L242.88 496.8C221.76 479.76 204.48 462.96 191.04 446.4C177.84 429.84 167.64 411.36 160.44 390.96C153.48 370.56 150 347.04 150 320.4C150 293.76 153.48 270.24 160.44 249.84C167.64 229.44 177.84 210.96 191.04 194.4C204.48 177.84 221.76 161.04 242.88 144L258.36 160.56C239.88 176.88 225.12 192.36 214.08 207C203.28 221.64 195.12 238.08 189.6 256.32C184.32 274.32 181.68 295.68 181.68 320.4Z" fill="white"/>
+            </svg>
+            <span>Toolkit</span>
+          </div>
+          <h1 className="gradient-text">Code</h1>
+          <h1 className="gradient-text">Faster then Ever</h1>
+          <p>A library of ready-to-use components in minutes</p>
+          <button className="btn">
+            Start Building
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
           </button>
         </div>
       </div>
@@ -33,137 +42,279 @@ const HerosectionFirst = () => {
 };
 
 const HerosectionSecond = () => {
+  const textRef = useRef(null);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      if (textRef.current) {
+        const rect = textRef.current.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+        
+        if (isVisible) {
+          textRef.current.style.opacity = '1';
+          textRef.current.style.transform = 'translateX(0)';
+        } else {
+          textRef.current.style.opacity = '0';
+          textRef.current.style.transform = 'translateX(50px)';
+        }
+      }
+    };
+
+    // Initial check
+    handleScroll();
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const features = [
+    {
+      text: "Scalable database model",
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M21 5c0 1.1-2.9 2-6.5 2S8 6.1 8 5s2.9-2 6.5-2S21 3.9 21 5z"/>
+        <path d="M21 12c0 1.1-2.9 2-6.5 2S8 13.1 8 12"/>
+        <path d="M21 19c0 1.1-2.9 2-6.5 2S8 20.1 8 19"/>
+        <path d="M3 5v14c0 1.1 2.9 2 6.5 2"/>
+        <path d="M3 12V5"/>
+        <path d="M3 19v-7"/>
+      </svg>
+    },
+    {
+      text: "Clean business logic",
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M12 3L3 12l9 9"/>
+        <path d="M21 12H3"/>
+        <path d="M12 3l9 9-9 9"/>
+      </svg>
+    },
+    {
+      text: "Well-crafted UI components",
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <rect x="3" y="3" width="18" height="18" rx="2"/>
+        <path d="M3 9h18"/>
+        <path d="M9 21V9"/>
+      </svg>
+    },
+    {
+      text: "Hooks and state management",
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M18 8c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4z"/>
+        <path d="M10 8c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4z"/>
+        <path d="M18 16c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4z"/>
+        <path d="M10 16c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4z"/>
+      </svg>
+    },
+    {
+      text: "Type-safe API routes",
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M20 4L12 12l8 8"/>
+        <path d="M4 4l8 8-8 8"/>
+      </svg>
+    }, {
+      text: "Scalable database model",
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M21 5c0 1.1-2.9 2-6.5 2S8 6.1 8 5s2.9-2 6.5-2S21 3.9 21 5z"/>
+        <path d="M21 12c0 1.1-2.9 2-6.5 2S8 13.1 8 12"/>
+        <path d="M21 19c0 1.1-2.9 2-6.5 2S8 20.1 8 19"/>
+        <path d="M3 5v14c0 1.1 2.9 2 6.5 2"/>
+        <path d="M3 12V5"/>
+        <path d="M3 19v-7"/>
+      </svg>
+    },
+    {
+      text: "Clean business logic",
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M12 3L3 12l9 9"/>
+        <path d="M21 12H3"/>
+        <path d="M12 3l9 9-9 9"/>
+      </svg>
+    },
+    {
+      text: "Well-crafted UI components",
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <rect x="3" y="3" width="18" height="18" rx="2"/>
+        <path d="M3 9h18"/>
+        <path d="M9 21V9"/>
+      </svg>
+    },
+    {
+      text: "Hooks and state management",
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M18 8c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4z"/>
+        <path d="M10 8c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4z"/>
+        <path d="M18 16c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4z"/>
+        <path d="M10 16c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4z"/>
+      </svg>
+    },
+    {
+      text: "Type-safe API routes",
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M20 4L12 12l8 8"/>
+        <path d="M4 4l8 8-8 8"/>
+      </svg>
+    }
+  ];
+
   return (
-    <div className="HerosectionSecond_maincont">
-      <div className="HerosectionSecond_contentcont">
-        <h1 className="HerosectionSecond_contentcont_h1">REINVENTION</h1>
-        <h2 className="HerosectionSecond_contentcont_h2">
-          STRATEGY FOR SUCCESS
-        </h2>
-        <p className="HerosectionSecond_contentcont_p">
-          The rate of change affecting businesses has risen over 183% in the
-          last 4 years.
-        </p>
-        <p className="HerosectionSecond_contentcont_p">
-          To counter this, 83% of organisations have accelerated the execution
-          of reinvention with GenAI.
-        </p>
+    <div className="second-section-container">
+      <div className="card second-card">
+        <div className="card-container">
+          <div className="left-section">
+            <h1 className="title">Waitlist Kit</h1>
+            <p className="subtitle">Collect emails and get referrals for your product.</p>
+            
+            <ul className="features">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
+                Launch your waitlist in minutes, not days.
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
+                Grow faster with built-in referral system.
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
+                Track and manage signups in one place.
+              </li>
+            </ul>
+
+            <div className="card-actions">
+              <a href="#" className="button">
+                Build your waitlist
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polyline points="16 18 22 12 16 6"/>
+                  <polyline points="8 6 2 12 8 18"/>
+                </svg>
+              </a>
+
+              <p className="tech-stack">
+                TS · Prisma · Next.js · React · Shadcn/UI · Zod · React Query
+              </p>
+            </div>
+          </div>
+
+          <div className="right-section">
+            <div className="scroll-container">
+              <div className="scroll-content">
+                {features.map((feature, index) => (
+                  <div key={index} className="feature-card">
+                    {feature.icon}
+                    {feature.text}
+                  </div>
+                ))}
+                {/* Duplicate set for seamless scrolling */}
+                {features.map((feature, index) => (
+                  <div key={`duplicate-${index}`} className="feature-card">
+                    {feature.icon}
+                    {feature.text}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
 const HerosectionThird = () => {
-  return (
-    <div className="HerosectionThird_maincont">
-      <div className="HerosectionThird_maincont_h1">
-        in less than half the time against competitors
-      </div>
-      <div className="HerosectionThird_contentcont">
-        <div className="HerosectionThird_contentcont_box">
-          <div className="HerosectionThird_contentcont_box_imagecont">
-            <img src={box1iconimage} alt="box1iconimage" />
-          </div>
-          <p className="HerosectionThird_contentcont_box_p">
-            Greater improvements in productivity 
-          </p>
-        </div>
-        <div className="HerosectionThird_contentcont_box">
-          <div className="HerosectionThird_contentcont_box_imagecont">
-            <img src={box2iconimage} alt="box2iconimage" />
-          </div>
-          <p className="HerosectionThird_contentcont_box_p">
-            Greater improvements in productivity 
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-};
+  const toggleRef = useRef(null);
+  
+  const cards = [
+    {
+      text: "Scalable database model",
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M21 5c0 1.1-2.9 2-6.5 2S8 6.1 8 5s2.9-2 6.5-2S21 3.9 21 5z"/>
+        <path d="M21 12c0 1.1-2.9 2-6.5 2S8 13.1 8 12"/>
+        <path d="M21 19c0 1.1-2.9 2-6.5 2S8 20.1 8 19"/>
+        <path d="M3 5v14c0 1.1 2.9 2 6.5 2"/>
+        <path d="M3 12V5"/>
+        <path d="M3 19v-7"/>
+      </svg>
+    },
+    {
+      text: "Clean business logic",
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M12 3L3 12l9 9"/>
+        <path d="M21 12H3"/>
+        <path d="M12 3l9 9-9 9"/>
+      </svg>
+    },
+    {
+      text: "Well-crafted UI components",
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <rect x="3" y="3" width="18" height="18" rx="2"/>
+        <path d="M3 9h18"/>
+        <path d="M9 21V9"/>
+      </svg>
+    },
+    {
+      text: "Hooks and state management",
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M18 8c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4z"/>
+        <path d="M10 8c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4z"/>
+        <path d="M18 16c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4z"/>
+        <path d="M10 16c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4z"/>
+      </svg>
+    },
+    {
+      text: "Type-safe API routes",
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M20 4L12 12l8 8"/>
+        <path d="M4 4l8 8-8 8"/>
+      </svg>
+    }
+  ];
 
-const HerosectionFourth = () => {
-  return (
-    <div className="HerosectionFourth_maincont">
-      <h1 className="HerosectionFourth_maincont_h1">GEN AI IN ACTION</h1>
-      <div className="HerosectionFourth_contentcont">
-        <div className="HerosectionFourth_contentcont_box">
-          <div className="HerosectionFourth_contentcont_box_imagecont">
-            <img src={box1iconimage3} alt="box1iconimage" />
-          </div>
-          <h3 className="HerosectionFourth_contentcont_box_h3">
-            3M Hours saved
-          </h3>
-          <p className="HerosectionFourth_contentcont_box_p">
-            An agency saved 3 million operational hours using GenAI. 
-          </p>
-        </div>
-        <div className="HerosectionFourth_contentcont_box">
-          <div className="HerosectionFourth_contentcont_box_imagecont">
-            <img src={box1iconimage4} alt="box2iconimage" />
-          </div>
-          <h3 className="HerosectionFourth_contentcont_box_h3">
-            16M customer offerings
-          </h3>
-          <p className="HerosectionFourth_contentcont_box_p">
-              A company delivered 16 million personalised offerings to their
-            customers within 3 months. 
-          </p>
-        </div>
-        <div className="HerosectionFourth_contentcont_box">
-          <div className="HerosectionFourth_contentcont_box_imagecont">
-            <img src={box1iconimage5} alt="box2iconimage" />
-          </div>
-          <h3 className="HerosectionFourth_contentcont_box_h3">+10% Revenue</h3>
-          <p className="HerosectionFourth_contentcont_box_p">
-            An insurer increased the potential revenue by 10% using AI in only
-            one single function of the whole process. 
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-};
+  useEffect(() => {
+    const toggleElement = toggleRef.current;
+    if (toggleElement) {
+      toggleElement.addEventListener('change', (e) => {
+        document.body.classList.toggle('light', e.target.checked);
+      });
 
-const HerosectionFifth = () => {
+      return () => {
+        if (toggleElement) {
+          toggleElement.removeEventListener('change', () => {});
+        }
+      };
+    }
+  }, []);
+
   return (
-    <div className="HerosectionFifth_maincont">
-      <h1 className="HerosectionFifth_maincont_h1">Our suite of service</h1>
-      <div className="HerosectionFifth_contentcont">
-        <div className="HerosectionFifth_contentcont_box">
-          <div className="HerosectionFifth_contentcont_box_imagecont">
-            <img src={box1iconimage6} alt="box1iconimage" />
+    <div className="third-section-container">
+      <div className="grid">
+        {cards.map((card, index) => (
+          <div key={index} className="card">
+            <span className="icon">
+              {card.icon}
+            </span>
+            <h4>{card.text}</h4>
+            <p>Build scalable and maintainable applications with our well-structured components and tools.</p>
+            <div className="shine"></div>
+            <div className="background">
+              <div className="tiles">
+                {[...Array(10)].map((_, i) => (
+                  <div key={i} className={`tile tile-${i + 1}`}></div>
+                ))}
+              </div>
+              <div className="line line-1"></div>
+              <div className="line line-2"></div>
+              <div className="line line-3"></div>
+            </div>
           </div>
-          <h3 className="HerosectionFifth_contentcont_box_h3">
-            AI ASSISTANT FOR CUSTOMER SERVICE
-          </h3>
-          <p className="HerosectionFifth_contentcont_box_p">
-            Eliminate unique customer frustrations and operational issues to
-            deliver a seamless experience that keeps them coming back, all while
-            driving greater operational efficiency and productivity with the
-            custom AI assistant for customer service.
-          </p>
-          <button className="HerosectionFifth_contentcont_box_button">
-            Learn More
-          </button>
-        </div>
-        <div className="HerosectionFifth_contentcont_box">
-          <div className="HerosectionFifth_contentcont_box_imagecont">
-            <img src={box1iconimage6} alt="box2iconimage" />
-          </div>
-          <h3 className="HerosectionFifth_contentcont_box_h3">
-            AI WORKFORCE FOR BUSINESS OPERATIONS
-          </h3>
-          <p className="HerosectionFifth_contentcont_box_p">
-            Imagine a workplace where challenges are met head-on, departments
-            thrive, and employees are empowered to focus on creativity and
-            innovation—all driven by custom AI solutions applicable throughout
-            the value chain.
-          </p>
-          <button className="HerosectionFifth_contentcont_box_button">
-            Learn More
-          </button>
-        </div>
+        ))}
       </div>
+      {/* ...rest of code... */}
     </div>
   );
 };
@@ -532,10 +683,10 @@ const HeroSection = () => {
           <HerosectionThird />
         </div>
         <div className="Layout_section">
-          <HerosectionFourth />
+          {/* <HerosectionFourth /> */}
         </div>
         <div className="Layout_section">
-          <HerosectionFifth />
+          {/* <HerosectionFifth /> */}
         </div>
         <div className="Layout_section">
           <Herosectionsixth />

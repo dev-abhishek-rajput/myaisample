@@ -57,7 +57,7 @@ export const CombinedMeshes = ({ position, ...props }) => {
       const localProgress = (progress - quarterProgress) / halfProgress; // Normalize
 
       camera.position.z = localProgress -0.2 
-      activeTexture = textures[1];
+      activeTexture = textures[0];
       
       if (ref.current) {
         // ref.current.position.x += localProgress;
@@ -71,7 +71,7 @@ export const CombinedMeshes = ({ position, ...props }) => {
       // camera.position.x = Math.sin(angle) * radius;
       camera.position.y = localProgress + 6 ;
       camera.position.z = localProgress + 0.29;
-      activeTexture = textures[2];
+      activeTexture = textures[0];
 
       if (ref.current) {
         // ref.current.position.x = 40 + localProgress * 20;
@@ -81,7 +81,7 @@ export const CombinedMeshes = ({ position, ...props }) => {
     } else if (progress > threeQuarterProgress && progress <= fullProgress) {
       // Final quarter
       const localProgress = (progress - threeQuarterProgress) / quarterProgress; // Normalize
-      activeTexture = textures[3];
+      activeTexture = textures[0];
 
       // camera.position.y = localProgress;
       // // camera.position.y = 0;
