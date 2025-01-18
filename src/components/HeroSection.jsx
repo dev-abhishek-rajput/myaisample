@@ -292,7 +292,7 @@ const HerosectionThird = () => {
 
   return (
     <div className="third-section-container">
-      <div className="grid">
+      <div className="animation-card-grid">
         {cards.map((card, index) => (
           <div key={index} className="card">
             <span className="icon">

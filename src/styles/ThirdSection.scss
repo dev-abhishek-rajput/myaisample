@@ -71,11 +71,10 @@ body {
     transition-duration: 0s !important;
   }
 }
-
-.grid {
+.animation-card-grid {
   display: grid;
   // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  max-width: 1000px;
+  max-width: 1050px;
   width: 100%;
   gap: 24px;
   padding: 20px;
@@ -90,19 +89,20 @@ body {
   }
 }
 
+
 .card {
   background-color: var(--background-color);
   box-shadow: 0px var(--card-box-shadow-1-y) var(--card-box-shadow-1-blur) var(--card-box-shadow-1), 0px var(--card-box-shadow-2-y) var(--card-box-shadow-2-blur) var(--card-box-shadow-2), 0 0 0 1px var(--card-border-color);
-  padding: 24px 20px;
+  padding: 20px 20px;
   border-radius: 15px;
   cursor: pointer;
   position: relative;
   transition: box-shadow .25s;
   display: flex;
   flex-direction: column;
-  // gap: 8px;
+  gap: 8px;
   min-height: auto;
-  max-height: 280px;
+  max-height: 380px;
   height: auto;
   overflow: hidden;
   max-width: 420px;
@@ -573,7 +573,7 @@ body {
 
 .third-section-container {
   min-height: auto;
-  padding: 0px 40px;
+  padding: 120px 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -604,14 +604,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 0; // Added to remove bottom margin
+  margin-top: 20vh; // Added to remove bottom margin
   
   .second-card {
     max-width: 1000px;
     width: 100%;
     min-height: 300px; // Reduced from 400px
     max-height: none;
-    padding: 32px; // Reduced from 40px
+    padding: 4  2px; // Reduced from 40px
     height: fit-content; // Added to fit content
 
     .card-container {
